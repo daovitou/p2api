@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+      - .env:/app/.env
+    scale: 3
+    networks:
+      - production-test
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    container_name: nginx
+    depends_on:
+      - backend
+    environment:
+      - NGINX_SERVER_NAME=localhost
+      - EXPRESS_HOST_1=api-backend-1
+      - EXPRESS_HOST_2=api-backend-2
+      - EXPRESS_HOST_3=api-backend-3
+      - EXPRESS_PORT=4000
+      - NGINX_MAX_BODY=100M
+    ports:
+      - 4000:4000
+    networks:
+      - production-test
+networks:
+  production-test:
+    name: production-test
+    external: true

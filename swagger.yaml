@@ -1,0 +1,1703 @@
+openapi: "3.1.1"
+info:
+  header: AgriDoc APIs
+  title: AgriDoc APIs
+  version: "1.0"
+  description: "API documentation using Swagger"
+  license:
+    name: MIT
+    url: https://spdx.org/licenses/MIT.html
+  contact:
+    name: Mr. Dao Vitou
+    url: https://www.daovitou.net
+    email: vitoudao@gmail.com
+servers:
+  - url: http://localhost:4000
+    description: development environment
+  - url: https://localhost:4000
+    description: production environment
+tags:
+  - name: Authentication
+    description: Authorization management operations
+  - name: Book Categories
+    description: Book Categories management operations
+  - name: Books
+    description: Books management operations
+  - name: Languages
+    description: Languages management operations
+  - name: Pages
+    description: Pages management operations
+  - name: Roles
+    description: Roles management operations
+  - name: Users
+    description: Users management operations
+  - name: Video Categories
+    description: Video Categories management operations
+  - name: Videos
+    description: Videos management operations
+#  ================ Mobile ==================== 
+  - name: Mobile-Books
+    description: Books management operations
+  - name: Mobile-Videos
+    description: Videos management operations
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      bearerFormat: "JWT"
+  schemas:
+    Authentication:
+      type: object
+      properties:
+        username:
+          type: string
+          description: username
+        password:
+          type: string
+          description: password
+      example:
+        username: string
+        password: string
+    Create-Book:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Book code
+        title:
+          type: string
+          description: Book title
+        author:
+          type: string
+          description: Book author
+        issued:
+          type: string
+          description: Book issued
+        page:
+          type: number
+          description: Book total page
+        isbn:
+          type: string
+          description: Book ISBN
+        issn:
+          type: string
+          description: Book ISSN
+        bookCategoryId:
+          type: number
+          description: Book category id
+        languageId:
+          type: number
+          description: Book language id
+      example:
+        code: string
+        title: string
+        author: string
+        issued: string
+        page: number
+        isbn: string
+        issn: string
+        bookCategoryId: number
+        languageId: number
+    Create-Book-Category:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Book Category name
+      example:
+        name: string
+    Create-Lanuage:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Language
+      example:
+        name: string
+    Create-Page:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Language
+      example:
+        name: string
+    Create-User:
+      type: object
+      properties:
+        firstname:
+          type: string
+          description: firstname
+        lastname:
+          type: string
+          description: lastname
+        username:
+          type: string
+          description: username
+        email:
+          type: string
+          description: email
+        password:
+          type: string
+          description: password
+        phone:
+          type: string
+          description: phone
+        roleId:
+          type: number
+          description: role id
+        status:
+          type: boolean
+          description: status
+      example:
+        firstname: string
+        lastname: string
+        username: string
+        email: string
+        password: string
+        phone: string
+        roleId: number
+        status: boolean
+    Create-Video-Category:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Video Category name
+      example:
+        name: string
+    Create-Video:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Video title
+        youtubeId:
+          type: string
+          description: Youtube video link
+        published:
+          type: date
+          description: Video published date
+        author:
+          type: string
+          description: Video author
+        videoCategoryId:
+          type: number
+          description: Video category id
+        languageId:
+          type: number
+          description: Video language id
+      example:
+        title: string
+        youtubeId: string
+        published: date
+        author: string
+        videoCategoryId: number
+        languageId: number
+    Update-Book-Category:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Book Category name
+      example:
+        name: string
+    Update-Book:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Book code
+        title:
+          type: string
+          description: Book title
+        author:
+          type: string
+          description: Book author
+        issued:
+          type: string
+          description: Book issued
+        page:
+          type: number
+          description: Book total page
+        isbn:
+          type: string
+          description: Book ISBN
+        issn:
+          type: string
+          description: Book ISSN
+        bookCategoryId:
+          type: number
+          description: Book category id
+        languageId:
+          type: number
+          description: Book language id
+      example:
+        code: string
+        title: string
+        author: string
+        issued: string
+        page: number
+        isbn: string
+        issn: string
+        bookCategoryId: number
+        languageId: number
+    Update-Language:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Language
+      example:
+        name: string
+    Update-Page:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Language
+      example:
+        name: string
+    Update-User:
+      type: object
+      properties:
+        firstname:
+          type: string
+          description: firstname
+        lastname:
+          type: string
+          description: lastname
+        phone:
+          type: string
+          description: phone
+        roleId:
+          type: number
+          description: role id
+        status:
+          type: boolean
+          description: status
+      example:
+        firstname: string
+        lastname: string
+        phone: string
+        roleId: number
+        status: boolean
+    Update-Video-Category:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Video Category name
+      example:
+        name: string
+    Update-Video:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Video title
+        youtubeId:
+          type: string
+          description: Youtube video link
+        published:
+          type: date
+          description: Video published date
+        author:
+          type: string
+          description: Video author
+        videoCategoryId:
+          type: number
+          description: Video category id
+        languageId:
+          type: number
+          description: Video language id
+      example:
+        title: string
+        youtubeId: string
+        published: date
+        author: string
+        videoCategoryId: number
+        languageId: number
+security:
+  - Bearer: []
+defaultSecurity: "Bearer"
+paths:
+  /v1/auth/loggin:
+    post:
+      tags:
+        - Authentication
+      summary: User authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Authentication"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/books:
+    get:
+      tags:
+        - Books
+      summary: Retieve books
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+        - in: query
+          name: cat
+          schema:
+            type: number
+          description: Filter record with only category id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Books
+      summary: Create books
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Book"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/books/{id}:
+    get:
+      tags:
+        - Books
+      summary: Retieve book by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a book by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Books
+      summary: Update a book
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a book by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Book"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Books
+      summary: Delete a book by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a book by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/book-categories:
+    get:
+      tags:
+        - Book Categories
+      summary: Retieve book categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Book Categories
+      summary: Create book categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Book-Category"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/book-categories/{id}:
+    get:
+      tags:
+        - Book Categories
+      summary: Retieve book category by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a book category by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Book Categories
+      summary: Update a book categories
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a book category by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Book-Category"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Book Categories
+      summary: Delete a book category by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a book category by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/languages:
+    get:
+      tags:
+        - Languages
+      summary: Retieve languages categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Languages
+      summary: Create languages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Language"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/languages/{id}:
+    get:
+      tags:
+        - Languages
+      summary: Retieve language by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a language by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Languages
+      summary: Update a languages
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a languages by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Language"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Languages
+      summary: Delete a languages by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a languages by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/pages:
+    get:
+      tags:
+        - Pages
+      summary: Retieve pages categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Pages
+      summary: Create pages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Page"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/pages/{id}:
+    get:
+      tags:
+        - Pages
+      summary: Retieve page by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a page by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Pages
+      summary: Update a pages
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a page by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Page"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Pages
+      summary: Delete a page by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a page by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/roles:
+    get:
+      tags:
+        - Roles
+      summary: Retieve roles
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/users:
+    get:
+      tags:
+        - Users
+      summary: Retieve users information account
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Users
+      summary: Create a user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-User"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/users/checkauth:
+    get:
+      tags:
+        - Users
+      summary: Check user authentication
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Retrieve a user information account
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a user by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Users
+      summary: Update a user information account
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a user information by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-User"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Users
+      summary: Delete a user account
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a user by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/video-categories:
+    get:
+      tags:
+        - Video Categories
+      summary: Retieve video categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Video Categories
+      summary: Create video categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Video-Category"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/video-categories/{id}:
+    get:
+      tags:
+        - Video Categories
+      summary: Retrieve a video categories
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a video category by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Video Categories
+      summary: Update a video categories
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a video category by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Video-Category"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Video Categories
+      summary: Delete a video category by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a video category by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/videos:
+    get:
+      tags:
+        - Videos
+      summary: Retieve Videos
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+        - in: query
+          name: cat
+          schema:
+            type: number
+          description: Filter record with only category id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    post:
+      tags:
+        - Videos
+      summary: Create Videos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Create-Video"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /v1/videos/{id}:
+    get:
+      tags:
+        - Videos
+      summary: Retieve video by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Retrieve a video by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    put:
+      tags:
+        - Videos
+      summary: Update a video
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Update a video by id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Update-Video"
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+    delete:
+      tags:
+        - Videos
+      summary: Delete a video by id
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          required: true
+          description: Delete a video by id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+# ============ Mobile ============ 
+  /mobile/v1/book-categories:
+    get:
+      tags: 
+        - Mobile-Books
+      summary: Retieve book categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/books:
+    get:
+      tags: 
+        - Mobile-Books
+      summary: Retieve books
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/books/{id}:
+    get:
+      tags: 
+        - Mobile-Books
+      summary: Retieve books
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          description: Get record by book id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/books/category/{gid}:
+    get:
+      tags: 
+        - Mobile-Books
+      summary: Retieve books by book category id
+      parameters:
+        - in: path
+          name: gid
+          schema:
+            type: number
+          description: Category id
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/video-categories:
+    get:
+      tags: 
+        - Mobile-Videos
+      summary: Retieve video categories
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/videos:
+    get:
+      tags: 
+        - Mobile-Videos
+      summary: Retieve videos
+      parameters:
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/videos/{id}:
+    get:
+      tags: 
+        - Mobile-Videos
+      summary: Retieve videos
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: number
+          description: Get record by video id
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
+  /mobile/v1/videos/category/{gid}:
+    get:
+      tags: 
+        - Mobile-Videos
+      summary: Retieve videos by video category id
+      parameters:
+        - in: path
+          name: gid
+          schema:
+            type: number
+          description: Category id
+        - in: query
+          name: pages
+          schema:
+            type: number
+          description: Page of records
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Limit records per page
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search records
+      responses:
+        "200":
+          description: Successful
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbbiden
+        "404":
+          description: Not Found
+        "429":
+          description: Too Many Request
+        "500":
+          description: Server Not Response
